@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI管家私有化问答系统</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="ambient ambient-three"></div>
+
+  <div class="workspace">
+    <aside class="sidebar">
+      <div class="brand-block reveal">
+        <div class="brand-mark">AI</div>
+        <div>
+          <p class="brand-eyebrow">PRIVATE AI BUTLER</p>
+          <h1>企业知识中枢</h1>
+        </div>
+      </div>
+
+      <nav class="nav-panel reveal delay-1">
+        <button class="nav-item active" data-target="overviewPanel">
+          <span class="nav-kicker">01</span>
+          <span class="nav-text">总览控制台</span>
+        </button>
+        <button class="nav-item" data-target="qaPanel">
+          <span class="nav-kicker">02</span>
+          <span class="nav-text">智能问答</span>
+        </button>
+        <button class="nav-item" data-target="ingestPanel">
+          <span class="nav-kicker">03</span>
+          <span class="nav-text">知识导入</span>
+        </button>
+        <button class="nav-item" data-target="resultPanel">
+          <span class="nav-kicker">04</span>
+          <span class="nav-text">结果洞察</span>
+        </button>
+      </nav>
+
+      <section class="sidebar-card reveal delay-2">
+        <p class="sidebar-label">系统态势</p>
+        <div id="backendBadge" class="sidebar-value">正在连接系统...</div>
+      </section>
+
+      <section class="sidebar-card reveal delay-3">
+        <p class="sidebar-label">能力模块</p>
+        <div class="capability-list">
+          <span>真实 Ollama 推理</span>
+          <span>Milvus / 混合检索</span>
+          <span>企业文档增量入库</span>
+          <span>检索增强问答</span>
+        </div>
+      </section>
+    </aside>
+
+    <main class="main-stage">
+      <section id="overviewPanel" class="hero-panel reveal active-panel">
+        <div class="hero-copy-block">
+          <p class="eyebrow">企业私有化知识智能体平台</p>
+          <h2>为内网问答、文档沉淀与知识检索构建高可信 AI 底座</h2>
+          <p class="hero-copy">以真实本地模型、向量检索、知识更新链路和运行诊断能力为核心，将企业制度、流程、项目经验与内部资料转化为可检索、可追溯、可扩展的私有化问答系统。</p>
+        </div>
+        <div class="hero-stats">
+          <article class="stat-card reveal delay-1">
+            <strong>模型服务</strong>
+            <span>本地推理 / 低数据外泄风险</span>
+          </article>
+          <article class="stat-card reveal delay-2">
+            <strong>知识索引</strong>
+            <span>支持增量切分、向量化与刷新</span>
+          </article>
+          <article class="stat-card reveal delay-3">
+            <strong>结果控制</strong>
+            <span>回答 / 引用 / 诊断分层展示</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="stage-grid">
+        <section id="qaPanel" class="glass-panel control-panel reveal delay-1 active-panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">问答工作台</p>
+              <h3>智能问答</h3>
+            </div>
+            <span class="section-tip">基于知识检索增强生成</span>
+          </div>
+
+          <label class="field-block">
+            <span>问题输入</span>
+            <textarea id="questionInput" placeholder="请输入问题，例如：本地模型部署需要做什么？"></textarea>
+          </label>
+
+          <div class="field-row compact-row">
+            <label class="field-block small-field">
+              <span>召回数量</span>
+              <input id="topKInput" type="number" min="1" max="10" value="4">
+            </label>
+          </div>
+
+          <div class="button-row">
+            <button id="askBtn" class="primary-button">发起问答</button>
+            <button id="searchBtn" class="secondary-button">仅检索知识</button>
+            <button id="statsBtn" class="ghost-button">查看知识统计</button>
+          </div>
+        </section>
+
+        <section id="ingestPanel" class="glass-panel control-panel reveal delay-2 active-panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">知识更新链路</p>
+              <h3>知识文档导入</h3>
+            </div>
+            <span class="section-tip">支持 PDF / Word / Excel / CSV / TXT</span>
+          </div>
+
+          <div class="field-row upload-row">
+            <label class="field-block wide-field">
+              <span>选择文档</span>
+              <input id="fileInput" type="file" accept=".pdf,.docx,.xlsx,.csv,.txt,.md">
+            </label>
+            <label class="field-block">
+              <span>文档分类</span>
+              <input id="categoryInput" type="text" value="general" placeholder="如 policy">
+            </label>
+            <label class="field-block">
+              <span>文档来源</span>
+              <input id="sourceInput" type="text" value="企业内部资料" placeholder="例如制度库">
+            </label>
+          </div>
+
+          <div class="button-row">
+            <button id="ingestBtn" class="primary-button">导入知识文档</button>
+            <button id="healthBtn" class="secondary-button">查看系统诊断</button>
+          </div>
+        </section>
+      </section>
+
+      <section id="resultPanel" class="result-shell reveal delay-3 active-panel">
+        <div class="result-header glass-panel">
+          <div>
+            <p class="section-kicker">结果洞察中心</p>
+            <h3>回答与引用分析</h3>
+          </div>
+          <span id="statusText" class="status-pill">等待操作</span>
+        </div>
+
+        <div class="result-grid">
+          <section class="glass-panel answer-panel">
+            <div class="result-title-row">
+              <h4>回答结果</h4>
+              <span class="result-tag">Answer</span>
+            </div>
+            <div id="answerOutput" class="result-block prose-block">欢迎使用 AI 管家私有化问答系统</div>
+          </section>
+
+          <section class="glass-panel reference-panel">
+            <div class="result-title-row">
+              <h4>引用文档</h4>
+              <span class="result-tag">References</span>
+            </div>
+            <div id="referencesOutput" class="result-block list-block">暂无引用内容</div>
+          </section>
+
+          <section class="glass-panel diagnostics-panel">
+            <div class="result-title-row">
+              <h4>诊断与原始数据</h4>
+              <span class="result-tag">Diagnostics</span>
+            </div>
+            <pre id="diagnosticsOutput" class="result-block code-block">等待系统返回数据</pre>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>
