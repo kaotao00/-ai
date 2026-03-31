@@ -84,3 +84,12 @@ set AI_BUTLER_MILVUS_URI=http://localhost:19530
 - 当 `AI_BUTLER_USE_OLLAMA=1` 时，系统会直接调用 `Ollama /api/generate`
 - 当 `AI_BUTLER_USE_MILVUS=1` 时，系统会优先使用 Milvus 作为向量库
 - `/health` 会返回当前模型、检索后端以及诊断信息，便于确认是否真正连上 Ollama 和 Milvus
+前端页面：
+<img width="1650" height="812" alt="beb2786237fafbc9328647d37c76c89d" src="https://github.com/user-attachments/assets/d2ae3faa-ffe5-4646-b2e0-62c0b9ddd606" />
+<img width="1579" height="875" alt="0f416db6e1a510e3efdddbb65d32688d" src="https://github.com/user-attachments/assets/123f63fb-2c6e-40c0-9926-1553488a5b4e" />
+接口页面：
+<img width="1738" height="522" alt="b979047fab25f25a2cf184dac85f75fb" src="https://github.com/user-attachments/assets/3be6417e-895c-47b8-bf0d-6516c3e228fe" />
+<img width="1495" height="725" alt="20016caeeb3942c83d214c56525624f3" src="https://github.com/user-attachments/assets/11e1dfae-6c8b-43a8-9894-316b84574c41" />
+
+
+
